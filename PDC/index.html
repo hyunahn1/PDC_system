@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PiRacer PDC Simulator</title>
+  <link rel="stylesheet" href="src/styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="camera-stage" aria-label="PDC camera simulator">
+      <canvas id="pdcCanvas" width="960" height="600"></canvas>
+      <div class="hud-strip">
+        <div>
+          <span class="eyebrow">Nearest</span>
+          <strong id="nearestValue">-- cm</strong>
+        </div>
+        <div>
+          <span class="eyebrow">Level</span>
+          <strong id="levelValue">Off</strong>
+        </div>
+        <div>
+          <span class="eyebrow">Gear</span>
+          <strong id="gearValue">R</strong>
+        </div>
+      </div>
+    </section>
+
+    <aside class="control-panel" aria-label="PDC controls">
+      <header>
+        <h1>PiRacer PDC</h1>
+        <p>Rear distance control simulator</p>
+      </header>
+
+      <div class="control-row">
+        <button id="autoButton" class="primary" type="button">Pause Auto</button>
+        <button id="gearButton" type="button">Gear R</button>
+      </div>
+
+      <div class="scenario-grid" aria-label="Scenarios">
+        <button type="button" data-scenario="clear">Clear</button>
+        <button type="button" data-scenario="left">Left</button>
+        <button type="button" data-scenario="center">Center</button>
+        <button type="button" data-scenario="right">Right</button>
+        <button type="button" data-scenario="critical">Critical</button>
+        <button type="button" data-scenario="stale">Stale</button>
+      </div>
+
+      <div class="sliders" id="sensorSliders"></div>
+
+      <div class="thresholds">
+        <label>
+          Near
+          <input id="nearThreshold" type="number" min="80" max="200" value="120">
+        </label>
+        <label>
+          Caution
+          <input id="cautionThreshold" type="number" min="35" max="100" value="60">
+        </label>
+        <label>
+          Critical
+          <input id="criticalThreshold" type="number" min="10" max="50" value="30">
+        </label>
+      </div>
+
+      <pre id="stateOutput" aria-label="PDC state"></pre>
+    </aside>
+  </main>
+
+  <script src="src/pdc-core.js"></script>
+  <script src="src/app.js"></script>
+</body>
+</html>
